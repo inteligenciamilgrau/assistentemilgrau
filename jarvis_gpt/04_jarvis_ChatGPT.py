@@ -8,12 +8,13 @@ config_assistente = {
     "porta_arduino" : "COM10",
     "pino": 8,
     "assistente_falante": True,
-    "com_arduino": False,
+    "com_arduino": True,
     "entrada_por_texto": False,
     "lingua": "pt-BR",
     "voz":1,
     # caso nao queira falar "assistente" ou "Chat GPT"
     "sem_palavra_ativadora": False,
+    "sem_palavra_ativadora_chatgpt": False,
     # ajusta ruido do ambiente
     "ajustar_ambiente_noise": True
 }
@@ -74,7 +75,7 @@ def main():
     r = sr.Recognizer()
     mic = sr.Microphone()
 
-    sair = {"sair", "desligar"}
+    sair = {"sair"}
     chamar_assistente = {"assistente"}
     chamar_assistente_ChatGPT = {"gpt", "chatgpt", "chat gpt"}
     cancelar = ("cancela", "cancelar")
@@ -130,6 +131,8 @@ def main():
         elif comecodafrase in chamar_assistente or config_assistente["sem_palavra_ativadora"]:
             if len(comecodafrase) > 0:
                 comando_recebido = comando_recebido[len(comecodafrase) + 1:].lower()
+            elif config_assistente["sem_palavra_ativadora"]:
+                mensagem = comando_recebido
             print("comando_recebido", comando_recebido)
             if comando_recebido in comando1:
                 if (config_assistente["assistente_falante"]):
@@ -141,9 +144,11 @@ def main():
                     falar("Vai Desligar", engine, voices, config_assistente["voz"])
                 if config_assistente["com_arduino"]:
                     board.digital[config_assistente["pino"]].write(0)
-        elif comecodafrase in chamar_assistente_ChatGPT:
+        elif comecodafrase in chamar_assistente_ChatGPT or config_assistente["sem_palavra_ativadora_chatgpt"]:
             if len(comecodafrase) > 0:
                 mensagem = comando_recebido[len(comecodafrase) + 1:]
+            elif config_assistente["sem_palavra_ativadora_chatgpt"]:
+                mensagem = comando_recebido
             print("comando_recebido", mensagem)
             mensagens = zerarMensagens()
             mensagens.append({"role": "user", "content": str(mensagem)})

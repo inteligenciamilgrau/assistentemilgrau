@@ -48,11 +48,11 @@ elif avatar_player == "golfinho":
     img_fechada_tk = PhotoImage(file="mouths/dolphin_1_mouth.png")
     img_fechada_tk = img_fechada_tk.subsample(2)
 
-    img_pose1_tk = PhotoImage(file="poses/dolphin_1_pose.png")
+    img_pose1_tk = PhotoImage(file="poses/dolphin_2_pose.png")
     img_pose1_tk = img_pose1_tk.subsample(2)
 
     abertura_boca = 6
-    mouth_position = (110, 60 + abertura_boca)
+    mouth_position = (26, 24 + abertura_boca)
 
     pose_container = canvas.create_image(0, 0, anchor=NW, image=img_pose1_tk)
     mouth_container = canvas.create_image(mouth_position[0], mouth_position[1], anchor=NW, image=img_fechada_tk)

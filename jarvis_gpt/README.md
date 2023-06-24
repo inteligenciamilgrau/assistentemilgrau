@@ -33,3 +33,7 @@ No Arduino é preciso instalar a biblioteca Firmata e gravar no Arduino o exempl
 - Avatar no Jarvis com ChatGPT - Parte 5.1
 
 [!["Avatar no Jarvis com ChatGPT - Parte 5.1"](https://img.youtube.com/vi/aixZc7Z-BBY/0.jpg)](https://www.youtube.com/watch?v=aixZc7Z-BBY)
+
+- Assistente Com ChatGPT Integrado com Avatar - Parte 5-2
+
+[!["Assistente Com ChatGPT Integrado com Avatar - Parte 5-2"](https://img.youtube.com/vi/jvlGyauExz0/0.jpg)](https://www.youtube.com/watch?v=jvlGyauExz0)
